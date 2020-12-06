@@ -73,6 +73,7 @@ public:
 
     void sound() {
         printf("Honk!");
+        printf("Honk!\n");
     }
 };
 
