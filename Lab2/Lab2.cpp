@@ -109,6 +109,11 @@ public:
         delete g3;
         printf("~Gaggle()\n");
     }
+    void migration(){
+        g1->fly();
+        g2->fly();
+        g3->fly();
+    }
 };
 
 
