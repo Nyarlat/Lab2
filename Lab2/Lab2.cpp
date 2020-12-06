@@ -28,8 +28,8 @@ public:
         printf("\n");
     }
     void fly() {
-            stamina -= 5;
-            speed += 5;
+        stamina -= 5;
+        speed += 5;
     }
     void run();
 };
@@ -43,28 +43,29 @@ void Bird::run() {
 
 class Goose : public Bird {
 protected:
-    std::string skin;
+    int skin;
 public:
     Goose() :Bird() {
-        printf("Subject()\n");
-        skin = "White";
+        printf("Goose()\n");
+        skin = 0;
     }
-    Goose(int stamina, int speed, std::string skin) :Bird(stamina, speed) {
-        printf("Subject(int x, int y)\n");
+    Goose(int stamina, int speed, int skin) :Bird(stamina, speed) {
+        printf("Goose(int stamina, int speed, int skin)\n");
         this->skin = skin;
 
     }
 
     Goose(const Goose& g) {
-        printf("Subject(const Subject& p)\n");
+        printf("Goose(const Goose& p)\n");
         stamina = g.stamina;
         speed = g.speed;
         skin = g.skin;
     }
 
     ~Goose() {
+        sound();
         printf("%d,%d,%d\n", stamina, speed, skin);
-        printf("~Subject()\n");
+        printf("~Goose()\n");
         printf("\n");
     }
     void change_z(int new_skin) {
@@ -91,14 +92,14 @@ public:
         g2 = new Goose;
         g3 = new Goose;
     }
-    Gaggle(int stamina1, int speed1, std::string skin1, int stamina2, int speed2, std::string skin2, int stamina3, int speed3, std::string skin3) {
-        printf("Gaggle(int x, int y)\n");
+    Gaggle(int stamina1, int speed1, int skin1, int stamina2, int speed2, int skin2, int stamina3, int speed3, int skin3) {
+        printf("Gaggle(int stamina, int speed, std::string skin)\n");
         g1 = new Goose(stamina1, speed1, skin1);
         g2 = new Goose(stamina2, speed2, skin2);
         g3 = new Goose(stamina3, speed3, skin3);
     }
     Gaggle(const Gaggle& ga) {
-        printf("Section(const Section& p)\n");
+        printf("Gaggle(const Gaggle& p)\n");
         g1 = new Goose(*(ga.g1));
         g2 = new Goose(*(ga.g2));
         g3 = new Goose(*(ga.g3));
@@ -137,10 +138,10 @@ int main() {
     delete b2;
     delete b3;
 
-    Goose* g1 = new Goose(10, 11, "Grey");
+    Goose* g1 = new Goose(10, 11, 1);
     delete g1;
 
-    Bird* g2 = new Goose(1, 2, "Black");
+    Bird* g2 = new Goose(1, 2, 2);
     delete g2;
 
     Gaggle* ga1 = new Gaggle;
