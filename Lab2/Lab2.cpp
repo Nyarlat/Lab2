@@ -140,6 +140,7 @@ int main() {
     delete b3;
 
     Goose* g1 = new Goose(10, 11, 1);
+    g1->fly();
     delete g1;
 
     Bird* g2 = new Goose(1, 2, 2);
