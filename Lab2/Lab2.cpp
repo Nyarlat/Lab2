@@ -3,8 +3,9 @@
 #include <stdio.h>
 
 class  Bird {
-public:
+private:
     int wing = 2;
+public:
     int stamina;
     int speed;
     Bird() {
@@ -18,7 +19,7 @@ public:
         this->speed = speed;
     }
     Bird(const Bird& b) {
-        printf("Bird(const Bird& p)\n");
+        printf("Bird(const Bird& b)\n");
         stamina = b.stamina;
         speed = b.speed;
     }
@@ -56,7 +57,7 @@ public:
     }
 
     Goose(const Goose& g) {
-        printf("Goose(const Goose& p)\n");
+        printf("Goose(const Goose& g)\n");
         stamina = g.stamina;
         speed = g.speed;
         skin = g.skin;
@@ -93,13 +94,13 @@ public:
         g3 = new Goose;
     }
     Gaggle(int stamina1, int speed1, int skin1, int stamina2, int speed2, int skin2, int stamina3, int speed3, int skin3) {
-        printf("Gaggle(int stamina, int speed, std::string skin)\n");
+        printf("Gaggle(int stamina, int speed, int skin)\n");
         g1 = new Goose(stamina1, speed1, skin1);
         g2 = new Goose(stamina2, speed2, skin2);
         g3 = new Goose(stamina3, speed3, skin3);
     }
     Gaggle(const Gaggle& ga) {
-        printf("Gaggle(const Gaggle& p)\n");
+        printf("Gaggle(const Gaggle& ga)\n");
         g1 = new Goose(*(ga.g1));
         g2 = new Goose(*(ga.g2));
         g3 = new Goose(*(ga.g3));
@@ -121,13 +122,13 @@ public:
 int main() {
     {
         Bird p;
-        Bird p2(10, 20);
+        Bird p2(15, 20);
         Bird p3(p2);
         printf("\n");
     }
 
     Bird* b1 = new Bird;
-    Bird* b2 = new Bird(10, 20);
+    Bird* b2 = new Bird(12, 20);
     b2->fly();
     b2->run();
 
@@ -142,6 +143,7 @@ int main() {
     delete g1;
 
     Bird* g2 = new Goose(1, 2, 2);
+    g2->speed = 22;
     delete g2;
 
     Gaggle* ga1 = new Gaggle;
